@@ -22,7 +22,7 @@ array.reverse()
 # 가장 긴 증가하는 부분 수열(Longest Increasing Subsequence, LIS) 알고리즘 수행
 for i in range(1,len(array)):
     for j in range(0,i):
-        if array[i]>array[j]:
+        if array[i]>array[j]: # 이전 원소와 비교
             dp[i] = max(dp[i],dp[j]+1)
 
 # 열외해야 하는 병사의 최소 수
@@ -31,4 +31,4 @@ print(N-max(dp))
 # 최장 증가 부분 수열(LIS) 알고리즘 : 원소가 n개인 배열의 일부 원소를 골라내서 만든 부분 수열중,
 #                                 각 원소가 이전 원소보다 크다는 조건을 만족하고,
 #                                 그 길이가 최대인 부분 수열을 최장 증가 부분수열 이라고한다.
-#                                 ex) {6,2,5,1,7,4,8,3}이라는 배열이 있을 경우, LIS는 {2,5,7,8}이 된다.
+#                                 ex) {6,2,5,1,7,4,8,3}이라는 배열이 있을 경우 LIS는 {2,5,7,8}이 된다.
