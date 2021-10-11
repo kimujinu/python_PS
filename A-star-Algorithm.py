@@ -7,15 +7,17 @@
 #
 # F = G + H , 에이스타 알고리즘의 핵심값
 # 이 3개의 변수는 노드를 추가할 때마다 값이 갱신된다.
-# F = 출발 지점에서 목적지까지의 총 cost 합
+# F = 출발 지점에서 목적지까지의 총 cost 합(현재까지 이동하는데 걸린 비용과 예상 비용을 합친 총 비용)
 # G = 현재 노드에서 출발 지점까지의 총 cost
 # H = Heuristic(휴리스틱), 현재 노드에서 목적지까지의 추정 거리
+#     (사이에 방해물로 인해 실제 거리는 알지 못한다. 그들을 무시하고 예상거리를 도출한다. 여러 방법이 존재)
 #
 # 에이스타 알고리즘 특징 : 1) openList와 closeList라는 보조 데이터를 사용한다.
 #                      2) F = G + H 를 매번 노드를 생성할 때마다 계산한다.
 #                      3) openList에는 현재 노드에서 갈 수 있는 노드를 전부 추가해서 F,G,H를 계산한다.
 #                          openList에 중복된 노드가 있다면, F값이 제일 작은 노드로 바꾼다.
 #                      4) closeList에는 openList에서 F값이 가장 작은 노드를 추가시킨다.
+
 
 class Node:
     def __init__(self,parent=None, position=None):
@@ -120,13 +122,13 @@ def aStar(maze,start,end):
 
             # f,g,h값 업데이트
             child.g = currentNode.g + 1
-            child.h = ((child.position[0] - endNode.position[0]) ** 2)+((child.position[1]- endNode.position[1]) ** 2)
+            child.h = ((child.position[0] - endNode.position[0]) ** 2)+((child.position[1]- endNode.position[1]) ** 2) # 사이에 방해물로 인해 실제 거리는 알지 못한다. 그들을 무시하고 예상거리를 도출한다. 여러 방법이 존재
 
             # child.h = heuristic(child,endNode) 다른 휴리스틱
             # print("position:", child.position) 거리 추정 값보기
             # print("from child to goal:",child.h)
 
-            child.f = child.g + child.h
+            child.f = child.g + child.h # 현재까지 이동하는데 걸린 비용과 예상 비용을 합친 총 비용 = 시작점 A로부터 현재 사각형까지의 경로를 따라 이동하는데 소용되는 비용 + 현재 노드에서 목적지 B까지의 예상 이동 비용
 
             # 자식이 openLsit에 있고, g값이 더 크면 continue
             if len([openNode for openNode in openList
