@@ -19,7 +19,7 @@ def bfs(x,y):
                     queue.append((nx,ny,0))
                 if graph[nx][ny] == 0 and vis[nx][ny][z] == 0 :
                     vis[nx][ny][z] = vis[x][y][z] + 1
-                    queue.append((nx,ny,z))
+                    queue.append((nx,ny,z)) 
     return -1
 
 
