@@ -19,6 +19,18 @@ dist = [INF] * (n+1) # 최단 거리 테이블을 모두 무한으로 초기화
 for _ in range(m):
     u,v,w = map(int,input().split()) # 노드, 인접 노드, 가중치
     edges.append((u,v,w))
+# 6 11
+# 1 2 2
+# 1 3 5
+# 1 4 1
+# 2 3 3
+# 2 4 2
+# 3 2 3
+# 3 6 5
+# 4 3 3
+# 4 5 1
+# 5 3 1
+# 5 2 6
 
 # 벨만 포드 알고리즘
 def bellman_Ford(start):

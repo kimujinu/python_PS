@@ -48,7 +48,7 @@ def topology_sort():
             indegree[i] -= 1
             # 새롭게 진입차수가 0이 되는 노드를 큐에 삽입
             if indegree[i] == 0:
-                q.append(i)
+                 q.append(i)
 
     #위상 정렬 수행 결과 츌력
     for i in result:

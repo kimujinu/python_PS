@@ -18,6 +18,7 @@ def backtracking(idx,cnt):
                     link += array[i][j]
         result = min(result,abs(start-link))
         return
+
     for i in range(idx,N):
         if vis[i] :
             continue
