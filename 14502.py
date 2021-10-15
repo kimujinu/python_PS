@@ -26,7 +26,7 @@ for i in range(N):
 dx = [-1,1,0,0]
 dy = [0,0,-1,1]
 
-def bfs():
+def bfs(): # bfs 핵심 삼성기출
     tempGraph = deepcopy(graph)
     queue = deque(virus)
 

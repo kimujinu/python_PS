@@ -1,6 +1,6 @@
 from collections import deque
 
-def bfs(x,y):
+def bfs(x,y): # bfs 핵심유형
     queue = deque()
     queue.append((x,y,1))
     vis = [[[0]*2 for _ in range(M)] for _ in range(N)]
