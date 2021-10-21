@@ -48,7 +48,7 @@ def solve(round):
                 res = 0
                 break
         return
-    
+
     t1, t2 = game[round]
     for x,y in ((0,2),(1,1),(2,0)):
         if match[t1][x] > 0 and match[t2][y] > 0:
