@@ -1,6 +1,6 @@
 from collections import deque
 
-def dfs(v):
+def dfs(v): # 엣지 문제
     vis[v] = 1
     print(v,end=' ')
     for i in range(1,N+1):
