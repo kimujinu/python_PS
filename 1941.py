@@ -21,7 +21,7 @@ dy = [0,0,-1,1]
 result = set()
 
 
-def backtrack(arr, index=0, S=0, Y=0):
+def backtrack(arr, index=0, S=0, Y=0): #복기 필요.
     if Y > 3:
         return
     if index == 6:
