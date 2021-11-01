@@ -9,12 +9,12 @@ N, M = map(int, input().split())
 graph = [[] for _ in range(N + 1)]
 for _ in range(M):
     A, B = map(int, input().split())
-    graph[B].append(A)
+    graph[B].append(A) # 간선의 정보가 2차원 배열이 아닐때
 
 max_value = 0
 result = []
 
-#def dfs(i,temp):
+#def dfs(i,temp): 
 #    global max_value
 #    temp.append(i)
 #    if graph[i] == []:
