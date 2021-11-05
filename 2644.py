@@ -13,7 +13,7 @@ A,B = map(int,input().split())
 graph = [[] for _ in range(n+1)]
 vis = [0 for _ in range(n+1)]
 for i in range(int(input())):
-    x,y = map(int,input().split())
+    x,y = map(int,input().split()) # 해당노드에 연결된 노드를 전부다 입력받는다.
     graph[x].append(y)
     graph[y].append(x)
 
