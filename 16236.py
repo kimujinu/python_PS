@@ -48,7 +48,7 @@ for i in range(N):
 def bfs(x,y,time,value):
     global baby_shark_level
     queue, temp = deque(), []
-    queue.append([x, y])
+    queue.append((x, y))
     vis = [[-1] * N for _ in range(N)]
     vis[x][y] = time
     while queue:
@@ -62,9 +62,10 @@ def bfs(x,y,time,value):
                     if vis[nx][ny] == -1:
                         if graph[nx][ny] == 0 or graph[nx][ny] == baby_shark_level:
                             vis[nx][ny] = vis[x][y] + 1
-                            queue.append([nx, ny])
+                            queue.append((nx, ny))
                         elif 0 < graph[nx][ny] < baby_shark_level:
-                            temp.append([nx, ny])
+                            vis[nx][ny] = vis[x][y] + 1
+                            temp.append((nx, ny))
             qlen -= 1
 
         if temp:
