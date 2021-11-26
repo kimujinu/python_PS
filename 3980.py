@@ -16,3 +16,28 @@
 # 각각의 테스트 케이스에 대해서, 모든 포지션의 선수를 채웠을 때,
 # 능력치의 합의 최댓값을 한 줄에 하나씩 출력한다.
 # 항상 하나 이상의 올바른 라인업을 만들 수 있다.
+
+def backtracking(x,value):
+    global result
+    if x == 11:
+        result = max(result,value)
+        return result
+    for i in range(1,12):
+        if vis[i] == 1 or graph[x][i-1] == 0:
+            continue
+        vis[i] = 1
+        value += graph[x][i-1]
+        backtracking(x+1,value)
+        vis[i] = 0
+        value -= graph[x][i-1]
+
+for _ in range(int(input())):
+    graph = []
+    vis = [0 for _ in range(12)]
+    result = 0
+    for i in range(11):
+        graph.append(list(map(int,input().split())))
+    backtracking(0, 0)
+    print(result)
+
+
