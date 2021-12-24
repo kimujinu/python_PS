@@ -570,3 +570,46 @@
 # 예를 들어 3x4 행렬의 크기는 3*4 = 12 이다.
 # 크기가 같을 경우 행이 작은 순으로 출력한다.
 # 예를 들어 12x4, 8x6 두 개의 행렬은 같은 크기이고 행은 각각 12, 8 이므로 8 6 12 4 순으로 출력한다.
+from collections import deque
+
+dx = [-1,1,0,0]
+dy = [0,0,-1,1]
+
+def bfs(i,j,count):
+    queue = deque()
+    queue.append((i,j))
+    vis[i][j] = count
+    while queue:
+        x,y = queue.popleft()
+        for i in range(4):
+            nx = x + dx[i]
+            ny = y + dy[i]
+            if 0<=nx<N and 0<=ny<N and graph[nx][ny] != 0 and vis[nx][ny] == 0:
+                vis[nx][ny] = count
+                queue.append((nx,ny))
+    return nx,ny
+
+
+
+for _ in range(int(input())):
+    N = int(input())
+    graph = []
+    vis = [[0]*N for _ in range(N)]
+    result = []
+    for _ in range(N):
+        graph.append(list(map(int,input().split())))
+    count = 1
+    for i in range(N):
+        for j in range(N):
+            if vis[i][j] == 0 and graph[i][j] != 0:
+                b_x, b_y = i,j
+                a_x,a_y = bfs(i,j,count)
+                result.append(((a_x-b_x)+1,(a_y-b_y)))
+                count += 1
+    f = sorted(result,key=lambda x:(x[0]*x[1]))
+    print(count-1,end=' ')
+    for i,j in f:
+        print(i, j, end=' ')
+    print()
+
+
