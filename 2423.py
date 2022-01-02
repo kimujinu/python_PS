@@ -44,26 +44,26 @@ def bfs():
             nx = x + dx[i]
             ny = y + dy[i]
             if 0<=nx<N and 0<=ny<M and vis[nx][ny] == 0:
-                if i<4:
+                if i<4: # 상하좌우 일때는 현재의 방향과 반대
                     vis[nx][ny] = 1
                     if graph[nx][ny] != h:
                         queue.appendleft((nx,ny,c,check(h))) # 빠르게 갈수 있는 방향일때 먼저 삽입
-                    else:
+                    else: # 방향 돌리기 카운팅
                         queue.append((nx,ny,c+1,check(h)))
-                elif i == 4 or i == 5:
+                elif i == 4 or i == 5: # 대각선 방향 이지만 \\ 일때
                     if h == '\\':
                         if graph[nx][ny] == '\\':
                             vis[nx][ny] = 1
                             queue.appendleft((nx,ny,c,h)) # 빠르게 갈수 있는 방향일때 먼저 삽입
-                        else:
+                        else: # 방향 돌리기 카운팅
                             vis[nx][ny] = 1
                             queue.append((nx,ny,c+1,h))
-                else:
+                else: # 대각선 방향이지만 / 일때
                     if h == '/':
                         if graph[nx][ny] == '/':
                             vis[nx][ny] = 1
                             queue.appendleft((nx,ny,c,h)) # 빠르게 갈수 있는 방향일때 먼저 삽입
-                        else:
+                        else: # 방향 돌리기 카운팅
                             vis[nx][ny] = 1
                             queue.append((nx,ny,c+1,h))
 print(bfs())
